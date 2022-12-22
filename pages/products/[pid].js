@@ -8,7 +8,7 @@ export default function ProductDetail({ data }) {
     <>
       <h1>{product.title}</h1>
       {
-        product.images.map((image) => <img src={image} />)
+        product.images.map((image) => <img key={image} src={image} />)
       }
     </>
   );
