@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 
 export default function Products({props}) {
@@ -16,17 +17,25 @@ export default function Products({props}) {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'title', headerName: 'Title', width: 300 },
+    { 
+      field: 'title', 
+      headerName: 'Title', 
+      width: 300,
+      renderCell: (params)=>{
+        return (
+          <>
+            <Link href={`/products/${params.row.id}`}>
+              {params.row.title}
+            </Link>
+          </>
+        )
+      }
+    },
     { field: 'price', headerName: 'Price', type: 'number', width: 100 },
     {
       field: 'discountPercentage',
       headerName: 'Discount Percentage',
       type: 'number',
-      width: 200,
-    },
-    {
-      field: 'brand',
-      headerName: 'Brand',
       width: 200,
     },
     {
@@ -58,7 +67,6 @@ export default function Products({props}) {
       renderCell: (params)=>{
         return (
           <div>
-            <Button variant="contained" color="warning" onClick={(e) => handleButton(e, params)} sx={{margin: '5px'}}>Edit</Button> <br />
             <Button variant="outlined" color="error" onClick={(e) => handleButton(e, params)} sx={{margin: '5px'}}>Delete</Button>
           </div>
         )
