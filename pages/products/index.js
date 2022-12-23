@@ -94,7 +94,7 @@ export default function Products({ data }) {
     try {
       let qs = '';
       let query = '';
-      let newUrl = 'http://localhost:3000/products';
+      let newUrl = window.location.protocol +"//" + window.location.host + window.location.pathname;
       if (typeof params === 'object' && Object.keys(params).length > 0) {
         qs = new URLSearchParams(params).toString();
         newUrl = newUrl + '?' + qs;
@@ -140,7 +140,7 @@ export default function Products({ data }) {
 //   }
 // }
 
-export async function getServerSideProps({ query }) {
+export async function getStaticProps({ query }) {
   let queryStr = "";
   if (typeof query === 'object' && Object.keys(query).length > 0) {
     queryStr = '/search?' + new URLSearchParams(query).toString();
