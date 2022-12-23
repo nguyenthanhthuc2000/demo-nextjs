@@ -2,16 +2,18 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import TextField from '@mui/material/TextField';
 
 
-export default function Products({props}) {
+export default function Products({ data }) {
   const [rows, setRows] = React.useState([]);
+  const [datas, setDatas] = React.useState(data);
 
   React.useEffect(() => {
     (async () => {
-      console.log('props', props);
-      const products = await getProducts();
-      setRows(products.products);
+      console.log('data', data);
+      // const products = await getProducts();
+      setRows(data.products);
     })();
   }, []);
 
@@ -60,10 +62,9 @@ export default function Products({props}) {
       }
     },
     {
-      field: 'actione',
+      field: 'action',
       headerName: 'Action',
       width: 200,sortable: false,
-      width: 150,
       renderCell: (params)=>{
         return (
           <div>
@@ -77,10 +78,42 @@ export default function Products({props}) {
   const handleButton = ( e, params) => {
     console.log(params);
   }
+  const handleKeyPress = async (e) => {
+    if (e.key === "Enter") {
+      let params = {};
+      if (e.target.value) {
+        params = {
+          q: e.target.value
+        };
+      }
+      handleSearch(params);
+    }
+  }
+
+  const handleSearch = async (params) => {
+    try {
+      let qs = '';
+      let query = '';
+      let newUrl = 'http://localhost:3000/products';
+      if (typeof params === 'object' && Object.keys(params).length > 0) {
+        qs = new URLSearchParams(params).toString();
+        newUrl = newUrl + '?' + qs;
+        query = '/search?' + qs;
+      }
+      window.history.pushState({ path: newUrl },'', newUrl);
+      const res = await fetch(`https://dummyjson.com/products${query}`);
+      const data = await res.json();
+      setRows(data.products);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
   return (
     <>
       <div className="container-fluid">
+        <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
+        <br /><br />
         <div style={{ height: 800, width: '100%' }}>
           <DataGrid
             rows={rows}
@@ -96,27 +129,23 @@ export default function Products({props}) {
   )
 }
 
-async function getProducts() {
-  const res = await fetch('https://dummyjson.com/products');
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
-// export async function getStaticProps() {
-//   const res = await fetch('https://dummyjson.com/products');
+// async function getStaticProps() {
+//   const res = await fetch('https://dummyjson.com/products/search?q=Laptop');
 //   const resJson = await res.json();
-//   const products = resJson.products;
+//   const data = resJson.products;
 //   return {
 //     props: {
-//       products,
+//       data,
 //     },
 //   }
 // }
 
-export async function getServerSideProps() {
-  const res = await fetch('https://dummyjson.com/products');
+export async function getServerSideProps({ query }) {
+  let queryStr = "";
+  if (typeof query === 'object' && Object.keys(query).length > 0) {
+    queryStr = '/search?' + new URLSearchParams(query).toString();
+  }
+  const res = await fetch(`https://dummyjson.com/products${queryStr}`);
   const data = await res.json();
   return {
     props: {
