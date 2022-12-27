@@ -56,7 +56,15 @@ export default function Products({ data }) {
         return (
           <div>
             {
-              params.row.images.map((image, index) => <Image key={`${params.row.id}-${index}`} style={{ width: '80px', margin: '5px' }} src={image} alt='' />)
+              params.row.images.map((image, index) => 
+              <Image 
+                key={`${params.row.id}-${index}`} 
+                style={{ margin: '5px' }} 
+                src={image} alt='' 
+                width={80}
+                height='auto'
+              />
+              )
             }
           </div>
         )
