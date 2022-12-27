@@ -3,6 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import TextField from '@mui/material/TextField';
+import Image from 'next/image';
 
 
 export default function Products({ data }) {
@@ -55,7 +56,7 @@ export default function Products({ data }) {
         return (
           <div>
             {
-              params.row.images.map((image, index) => <img key={`${params.row.id}-${index}`} style={{ width: '80px', margin: '5px' }} src={image} alt='' />)
+              params.row.images.map((image, index) => <Image key={`${params.row.id}-${index}`} style={{ width: '80px', margin: '5px' }} src={image} alt='' />)
             }
           </div>
         )
