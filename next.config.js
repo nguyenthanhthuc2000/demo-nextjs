@@ -4,13 +4,13 @@ const nextConfig = {
     customKey: 'my-value',
   },
   reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-      },
-    ],
-  },
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //     },
+  //   ],
+  // },
 }
 
 module.exports = nextConfig
