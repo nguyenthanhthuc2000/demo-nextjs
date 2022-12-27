@@ -4,6 +4,8 @@ const nextConfig = {
     customKey: 'my-value',
   },
   reactStrictMode: true,
+
+  // https://nextjs.org/docs/api-reference/next/image#remote-patterns
   images: {
     remotePatterns: [
       {
