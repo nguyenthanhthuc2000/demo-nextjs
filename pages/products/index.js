@@ -60,9 +60,11 @@ export default function Products({ data }) {
               <Image 
                 key={`${params.row.id}-${index}`} 
                 style={{ margin: '5px' }} 
-                src={image} alt='' 
-                width={80}
-                height='auto'
+                src={image} 
+                alt='' 
+                width='100'
+                height='100'
+                priority
               />
               )
             }
