@@ -7,17 +7,7 @@ import Image from 'next/image';
 
 
 export default function Products({ data }) {
-  const [rows, setRows] = React.useState([]);
-  const [datas, setDatas] = React.useState(data);
-
-  React.useEffect(() => {
-    (async () => {
-      console.log('data', data);
-      // const products = await getProducts();
-      setRows(data.products);
-    })();
-  }, []);
-
+  const [rows, setRows] = React.useState(data.products || []);
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { 
@@ -54,10 +44,9 @@ export default function Products({ data }) {
       width: 330,
       renderCell: (params)=>{
         return (
-          <div>
+          <>
             {
               params.row.images.map((img, index) => 
-              <>
                 <Image 
                   key={`${params.row.id}-${index}`} 
                   style={{ margin: '5px' }} 
@@ -67,10 +56,9 @@ export default function Products({ data }) {
                   height='100'
                   priority
                 />
-              </>
               )
             }
-          </div>
+          </>
         )
       }
     },
@@ -80,9 +68,7 @@ export default function Products({ data }) {
       width: 200,sortable: false,
       renderCell: (params)=>{
         return (
-          <div>
-            <Button variant="outlined" color="error" onClick={(e) => handleButton(e, params)} sx={{margin: '5px'}}>Delete</Button>
-          </div>
+          <Button variant="outlined" color="error" onClick={(e) => handleButton(e, params)} sx={{margin: '5px'}}>Delete</Button>
         )
       }
     },
@@ -124,20 +110,18 @@ export default function Products({ data }) {
   
   return (
     <>
-      <div className="container-fluid">
-        <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
-        <br /><br />
-        <div style={{ height: 800, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-            rowHeight={130}
-          />
-        </div>
-      </div>
+      <br />
+      <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
+      <br /><br />
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        rowHeight={130}
+        autoHeight={true}
+      />
     </>
   )
 }

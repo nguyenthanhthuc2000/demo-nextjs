@@ -2,7 +2,7 @@ import * as React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-export default function ProductDetail({ data }) {
+export default function ProductDetail1({ data }) {
   const router = useRouter();
   const [product, setProduct] = React.useState(data);
 
@@ -24,7 +24,7 @@ export default function ProductDetail({ data }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const id =  query.pid;
+  const id =  query.pidd[0];
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const data = await res.json();
   return {
