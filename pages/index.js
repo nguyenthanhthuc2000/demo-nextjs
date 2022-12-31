@@ -12,6 +12,7 @@ export default function Page({data}) {
         <title>Danh sách sản phẩm</title>
       </Head>
       <br /> <br />
+      <a href="#footer">Link to footer</a>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}

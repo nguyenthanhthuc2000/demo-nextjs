@@ -121,7 +121,7 @@ export default function ProductList({ brandKey }) {
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={5}
+            pageSize={30}
             rowsPerPageOptions={[5]}
             checkboxSelection
             rowHeight={130}
