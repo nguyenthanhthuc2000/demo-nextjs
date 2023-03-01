@@ -113,15 +113,13 @@ export default function ProductList({ brandKey }) {
   
   return (
     <>
-      {/* <br />
-      <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
-      <br /><br /> */}
+      {/* <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" /> */}
       <div style={{ display: 'flex', height: '100%' }}>
         <div style={{ flexGrow: 1 }}>
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={30}
+            pageSize={5}
             rowsPerPageOptions={[5]}
             checkboxSelection
             rowHeight={130}

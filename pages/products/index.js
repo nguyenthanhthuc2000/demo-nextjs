@@ -111,8 +111,9 @@ export default function Products({ data }) {
   return (
     <>
       <br />
-      {/* <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
-      <br /><br /> */}
+      <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
+      <br />
+      <br />
       <DataGrid
         rows={rows}
         columns={columns}

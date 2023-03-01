@@ -29,7 +29,7 @@ function NavbarCustom() {
     <>
       <Navbar collapseOnSelect expand="lg" className="header">
       <Container fluid>
-        <Navbar.Brand href="#home" className="logo-box">
+        <Navbar.Brand href="/" className="logo-box">
           <Image src={ImageLogo} alt='LogoImage' className="logo-image"/>
           <Image src={BgImageLogo} alt='LogoImage' className="logo-bg"/>
         </Navbar.Brand>
@@ -43,7 +43,7 @@ function NavbarCustom() {
               <Image src={IconHomeActive} alt='IconHomeActive' />
               ホーム
             </Nav.Link>
-            <Nav.Link href="/" className="menu-item">
+            <Nav.Link href="/products" className="menu-item">
               <Image src={IconItem} alt='IconItem' />
               商品
             </Nav.Link>
