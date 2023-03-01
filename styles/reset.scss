@@ -1,0 +1,19 @@
+:root {
+  --max-width: 1920px;
+  --border-radius: 12px;
+  --green-dark:#569572;
+  --white-text: #FFFFFF;
+  --black-text: black;
+  --green-text:#26C483;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

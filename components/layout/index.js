@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar />
-        <Container maxWidth="xl">
+        <Container maxWidth="">
           <main>{children}</main>
         </Container>
       <Footer />

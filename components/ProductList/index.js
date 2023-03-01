@@ -113,9 +113,9 @@ export default function ProductList({ brandKey }) {
   
   return (
     <>
-      <br />
+      {/* <br />
       <TextField id="standard-basic" onKeyPress={handleKeyPress} label="Search..." variant="standard" />
-      <br /><br />
+      <br /><br /> */}
       <div style={{ display: 'flex', height: '100%' }}>
         <div style={{ flexGrow: 1 }}>
           <DataGrid
@@ -132,28 +132,3 @@ export default function ProductList({ brandKey }) {
     </>
   )
 }
-
-// async function getStaticProps() {
-//   const res = await fetch('https://dummyjson.com/products/search?q=Laptop');
-//   const resJson = await res.json();
-//   const data = resJson.products;
-//   return {
-//     props: {
-//       data,
-//     },
-//   }
-// }
-
-// export async function getStaticProps({ query }) {
-//   let queryStr = "";
-//   if (typeof query === 'object' && Object.keys(query).length > 0) {
-//     queryStr = '/search?' + new URLSearchParams(query).toString();
-//   }
-//   const res = await fetch(`https://dummyjson.com/products${queryStr}`);
-//   const data = await res.json();
-//   return {
-//     props: {
-//       products: data,
-//     },
-//   }
-// }

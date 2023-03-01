@@ -1,164 +1,86 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import styles from './Navbar.module.scss';
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+
+import Image from 'next/image';
 import Link from 'next/link';
 
-const pages = ['Products'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import BgImageLogo from '../../public/assets/images/bg-logo.svg';
+import ImageLogo from '../../public/assets/images/logo_2.svg';
+import IconHome from '../../public/assets/icons/icon_home.svg';
+import IconItem from '../../public/assets/icons/icon_item.svg';
+import IconLog from '../../public/assets/icons/icon_log.svg';
+import IconSetting from '../../public/assets/icons/icon_setting.svg';
+import IconHelp from '../../public/assets/icons/icon_help.svg';
+import IconStorefront from '../../public/assets/icons/icon_storefront.svg';
 
-function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+import IconHomeActive from '../../public/assets/icons/icon_home_active.svg';
+import IconDown from '../../public/assets/icons/icon_down.svg';
 
 
+function NavbarCustom() {
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-                <Link href="/products" key={page}>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                  >
-                    {page}
-                  </Button>
-                </Link>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
+    <>
+      <Navbar collapseOnSelect expand="lg" className="header">
+      <Container fluid>
+        <Navbar.Brand href="#home" className="logo-box">
+          <Image src={ImageLogo} alt='LogoImage' className="logo-image"/>
+          <Image src={BgImageLogo} alt='LogoImage' className="logo-bg"/>
+        </Navbar.Brand>
+        <span className="menu-active">
+        反映/操作ログ
+        </span>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className={`me-auto nav-center`}>
+            <Nav.Link href="/" className={`menu-item menu-item__active`}>
+              <Image src={IconHomeActive} alt='IconHomeActive' />
+              ホーム
+            </Nav.Link>
+            <Nav.Link href="/" className="menu-item">
+              <Image src={IconItem} alt='IconItem' />
+              商品
+            </Nav.Link>
+            <Nav.Link href="/" className="menu-item">
+              <Image src={IconLog} alt='IconLog' />
+              ログ
+            </Nav.Link>
+            <Nav.Link href="/" className="menu-item">
+              <Image src={IconSetting} alt='IconSetting' />
+              設定
+            </Nav.Link>
+          </Nav>
+          <Nav className="nav-right">
+            <Button className="plan">プラン500</Button>
+            <Dropdown className="dropdown-account">
+              <Dropdown.Toggle id="dropdown-basic" className="store-front">
+                <Image src={IconStorefront} alt='IconStorefront' />
+                <p>グリニッジショップ（テスト１１テスト１１...</p>
+                <Image src={IconDown} alt='IconDown' />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="dropdown-account-item">
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Nav.Link eventKey={2} href="/" className="menu-help">
+              <span className="menu-help-col"></span>  
+              <Image src={IconHelp} alt='IconHelp' />
+              ヘルプ
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
-    </AppBar>
+      </Navbar>
+    </>
   );
 }
-export default Navbar;
+
+export default NavbarCustom;
