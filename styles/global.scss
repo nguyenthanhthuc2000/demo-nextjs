@@ -11,12 +11,6 @@ body {
  color: var(--black-text);
 }
 
-@media only screen and (max-width: 922px) {
-  .ColHeader {
-    display: none;
-  }
-}
-
 .header {
   background-color: var(--green-dark);
   padding: 2px 0px !important;
@@ -45,6 +39,7 @@ body {
     display: flex;
     align-items: center;
     .plan, .plan:hover {
+      font-size: 14px;
       min-width: 100px;
       height: 27px;
       border-radius: 20px;
@@ -57,6 +52,7 @@ body {
     .dropdown-account {
       margin-right: 15px;
       .store-front {
+        font-size: 14px;
         display: flex;
         align-items: center;
         background-color: initial !important;
@@ -92,6 +88,7 @@ body {
       color: #FFFFFF !important;
       position: relative;
       margin-left: 20px;
+      font-size: 14px;
       .menu-help-col {
         left: -15px;
         top: -8px;
@@ -106,7 +103,7 @@ body {
   }
   .menu-active, .menu-active:hover {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 26px;
     color: var(--white-text);
     margin-left: 5px;
@@ -120,7 +117,7 @@ body {
     width: 68px;
     height: 56px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 26px;
     color: var(--white-text);
     margin-right: 8px;
@@ -232,7 +229,7 @@ body {
 @media only screen and (max-width: 550px) {
   .header {
     .menu-active {
-      display: none !important;
+      display: none;
     }
     .nav-right {
       .dropdown-account {

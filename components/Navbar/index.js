@@ -5,8 +5,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +23,12 @@ import IconDown from '../../public/assets/icons/icon_down.svg';
 
 
 function NavbarCustom() {
+
+
+  const handleLogout = (e) => {
+    console.log(e);
+  }
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className="header">
@@ -65,9 +69,11 @@ function NavbarCustom() {
                 <Image src={IconDown} alt='IconDown' />
               </Dropdown.Toggle>
               <Dropdown.Menu className="dropdown-account-item">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item>
+                  <Button variant="primary" onClick={handleLogout()}>ログアウト</Button>
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <Nav.Link eventKey={2} href="/" className="menu-help">
